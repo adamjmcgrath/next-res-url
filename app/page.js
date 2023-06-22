@@ -1,7 +1,12 @@
 import Image from 'next/image'
 import styles from './page.module.css'
 
-export default function Home() {
+export default async function Home() {
+  const res = await fetch('https://cat-fact.herokuapp.com/facts/');
+  console.log('res.url with defaults:', res.url);
+  const res2 = await fetch('https://dog.ceo/api/breeds/list/all', { cache: 'no-store' });
+  console.log('res.url with "no-store":', res2.url);
+
   return (
     <main className={styles.main}>
       <div className={styles.description}>
